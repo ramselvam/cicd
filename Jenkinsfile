@@ -18,7 +18,7 @@ pipeline{
                  sh "./gradlew build   |  tee output.log"
                  }
                }
-
+         }
 
 /*        stage("docker build & docker push"){
             steps{
