@@ -3,7 +3,23 @@ pipeline{
     environment{
         VERSION = "${env.BUILD_ID}"
     }
-    stages{
+
+    stages{    
+
+        stage("sonar quality check"){
+           agent {
+              docker {
+                 image 'openjdk:11'
+                }
+            }
+           steps {
+               script{
+                sh 'chmod +x gradlew'
+                sh "./gradlew build   |  tee output.log"
+                 }
+              }
+
+
         stage("docker build & docker push"){
             steps{
                 script{
