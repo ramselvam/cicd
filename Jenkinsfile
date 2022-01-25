@@ -6,21 +6,21 @@ pipeline{
 
     stages{    
 
-        // stage("sonar quality check"){
-        //    agent {
-        //       docker {
-        //          image 'openjdk:11'
-        //         }
-        //     }
-        //    steps {
-        //        script{
-        //         sh 'chmod +x gradlew'
-        //         sh "./gradlew build   |  tee output.log"
-        //          }
-        //       }
+         stage("sonar quality check"){
+            agent {
+               docker {
+                  image 'openjdk:11'
+                 }
+             }
+            steps {
+                script{
+                 sh 'chmod +x gradlew'
+                 sh "./gradlew build   |  tee output.log"
+                 }
+               }
 
 
-        stage("docker build & docker push"){
+/*        stage("docker build & docker push"){
             steps{
                 script{
                     withCredentials([string(credentialsId: 'docker_pass', variable: 'docker_password')]) {
@@ -34,7 +34,7 @@ pipeline{
                 }
             }
         }
-
+*/
         stage('Deploying application on k8s cluster') {
             steps {
                script{
