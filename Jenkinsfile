@@ -19,7 +19,7 @@ pipeline{
                  }
                }
          }
-
+*/
        stage("docker build & docker push"){
             steps{
                 script{
@@ -34,7 +34,7 @@ pipeline{
                 }
             }
         }
-*/
+
         stage('Deploying application on k8s cluster') {
             steps {
                script{
