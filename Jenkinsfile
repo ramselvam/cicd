@@ -6,18 +6,18 @@ pipeline{
 
     stages{    
 
-        stage("sonar quality check"){
-           agent {
-              docker {
-                 image 'openjdk:11'
-                }
-            }
-           steps {
-               script{
-                sh 'chmod +x gradlew'
-                sh "./gradlew build   |  tee output.log"
-                 }
-              }
+        // stage("sonar quality check"){
+        //    agent {
+        //       docker {
+        //          image 'openjdk:11'
+        //         }
+        //     }
+        //    steps {
+        //        script{
+        //         sh 'chmod +x gradlew'
+        //         sh "./gradlew build   |  tee output.log"
+        //          }
+        //       }
 
 
         stage("docker build & docker push"){
